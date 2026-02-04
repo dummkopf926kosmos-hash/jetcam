@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>JETCAM</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --red:#e10613;
+  --blue:#7fd3ff;
+  --dark:#0a0f18;
+  --card:#121826;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Inter,sans-serif;
+}
+
+body{
+  background:var(--dark);
+  color:white;
+  overflow-x:hidden;
+}
+
+/* ⭐ Sternenhimmel */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(2px 2px at 20% 30%, white 40%, transparent 50%),
+    radial-gradient(2px 2px at 70% 60%, white 40%, transparent 50%),
+    radial-gradient(1px 1px at 40% 80%, white 40%, transparent 50%);
+  opacity:.25;
+  animation:stars 80s linear infinite;
+  z-index:-1;
+}
+
+@keyframes stars{
+  from{transform:translateY(0)}
+  to{transform:translateY(-300px)}
+}
+
+/* NAV */
+nav{
+  display:flex;
+  justify-content:space-between;
+  padding:20px 8%;
+  background:rgba(0,0,0,.6);
+}
+
+.logo{
+  font-family:Orbitron;
+  font-size:26px;
+  color:var(--red);
+  text-shadow:0 0 15px var(--red);
+}
+
+nav a{
+  color:white;
+  margin-left:20px;
+  text-decoration:none;
+}
+
+/* HERO */
+.hero{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+
+.hero h1{
+  font-family:Orbitron;
+  font-size:90px;
+  color:var(--red);
+  animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+  from{ text-shadow:0 0 10px var(--red)}
+  to{ text-shadow:0 0 40px var(--red)}
+}
+
+.btn{
+  margin-top:25px;
+  padding:12px 30px;
+  border:2px solid var(--blue);
+  background:transparent;
+  color:var(--blue);
+  border-radius:10px;
+  cursor:pointer;
+}
+
+.btn:hover{
+  background:var(--blue);
+  color:black;
+}
+
+/* SECTIONS */
+.section{
+  padding:100px 10%;
+}
+
+.title{
+  text-align:center;
+  font-family:Orbitron;
+  color:var(--blue);
+  margin-bottom:40px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:30px;
+}
+
+.card{
+  background:var(--card);
+  padding:40px;
+  border-radius:15px;
+  transition:.3s;
+}
+
+.card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 0 25px rgba(127,211,255,.3);
+}
+
+.center{
+  text-align:center;
+}
+
+.jet{
+  width:80%;
+  max-width:800px;
+  border-radius:20px;
+  transition:transform .3s;
+}
+
+.jet:hover{
+  transform:rotateY(8deg) rotateX(4deg) scale(1.03);
+}
+
+/* Sponsor */
+.sponsor{
+  text-align:center;
+  padding:70px;
+  background:#080c14;
+}
+
+footer{
+  text-align:center;
+  padding:20px;
+  opacity:.5;
+}
+</style>
+</head>
+
+
+<body>
+
+<nav>
+  <div class="logo">JETCAM</div>
+  <div>
+    <a href="#">Home</a>
+    <a href="#features">Features</a>
+    <a href="kontakt.html">Kontakt</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <h1>JETCAM</h1>
+  <p>Die Drohne im Kampfjet-Design</p>
+  <button class="btn sound">Mission starten</button>
+</header>
+
+<section id="features" class="section">
+  <h2 class="title">Features</h2>
+
+  <div class="grid">
+    <div class="card">Ultra Speed</div>
+    <div class="card">Jet Aerodynamik</div>
+    <div class="card">Futuristisches Design</div>
+  </div>
+</section>
+
+<section class="section center">
+  <img src="jetcam-poster.png" class="jet">
+</section>
+
+<section class="sponsor">
+  <h2>Sponsor</h2>
+  <p><b>Kugelbomben by DomiMondo</b></p>
+  <p>kugelbomben.domimondo@gmail.com</p>
+</section>
+
+<footer>© 2026 JETCAM</footer>
+
+
+<script>
+document.querySelectorAll(".sound").forEach(btn=>{
+  btn.onclick = () => new Audio("click.mp3").play();
+});
+</script>
+
+</body>
+</html>
